@@ -1,0 +1,9 @@
+# keys
+.env
+#logs
+.log
+#
+venv/
+__pycache__/
+#db
+*.db
