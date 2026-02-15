@@ -1,0 +1,4 @@
+# imports
+voyageai
+python-dotenv
+requests
