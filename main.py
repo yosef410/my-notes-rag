@@ -1,11 +1,26 @@
 from search.search import search
 from api.claude import ask_cloude
 
-qustion = input("Ask about your notes: ")
+history = []
 
-docs = search(qustion)
+print("chat here (type 'quit' to exit)")
+print("-" * 40)
 
 
-answer = ask_cloude(qustion, docs)
+while True:
 
-print(answer)
+     qustion = input("\nYou:  ")
+
+     if qustion.lower() == "quit":
+        print("goodbye!")
+        break
+
+     docs = search(qustion)
+
+     history.append({"role": "user","content": qustion})
+
+     answer = ask_cloude(qustion, docs)
+
+     history.append({"role":"assistant", "content": answer})
+
+     print(f"\nAssistant: {answer}")
