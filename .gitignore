@@ -1,7 +1,7 @@
 # keys
 .env
 #logs
-.log
+*.log
 #
 venv/
 __pycache__/
