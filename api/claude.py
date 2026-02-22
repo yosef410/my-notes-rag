@@ -5,7 +5,9 @@ from  dotenv import load_dotenv
 load_dotenv()
 api_key = os.getenv('cloude_1')
 
-def ask_cloude(ask, docs):
+def ask_cloude(ask, docs, history=None):
+    if history is None:
+       history = []
     url = "https://api.anthropic.com/v1/messages" 
     headers = {
           "x-api-key": api_key,
@@ -20,10 +22,14 @@ def ask_cloude(ask, docs):
 
 Based on those notes, answer this qustion: {ask}
 """
+    messages = history.copy()
+    messages.append({"role": "user","content": prompts})
+
+
     data = {
         "model": "claude-sonnet-4-20250514",
         "max_tokens": 500,
-        "messages": [{"role": "user", "content": prompts}]
+        "messages": messages
     }
 
     requess = requests.post(url, headers=headers, json=data)

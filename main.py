@@ -19,7 +19,7 @@ while True:
 
      history.append({"role": "user","content": qustion})
 
-     answer = ask_cloude(qustion, docs)
+     answer = ask_cloude(qustion, docs, history)
 
      history.append({"role":"assistant", "content": answer})
 
